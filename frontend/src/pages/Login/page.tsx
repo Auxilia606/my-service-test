@@ -1,0 +1,63 @@
+import { useNavigate } from "react-router-dom";
+import Button from "antd/es/button";
+import Form from "antd/es/form";
+import Input from "antd/es/input";
+
+import { Page } from "@shared/components/Page";
+
+export const Login: React.FC = () => {
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
+
+  return (
+    <Page>
+      <Page.Header title="로그인" />
+      <Page.Body>
+        <Form form={form}>
+          <Form.Item
+            label="아이디"
+            name="id"
+            rules={[{ required: true, message: "아이디를 입력해주세요" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="비밀번호"
+            name="password"
+            rules={[{ required: true, message: "비밀번호를 입력해주세요" }]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item noStyle>
+            <Button type="primary" htmlType="submit" className="my-4">
+              로그인
+            </Button>
+          </Form.Item>
+        </Form>
+        <div className="flex gap-2 justify-center my-4">
+          <Button
+            type="text"
+            className="text-xs"
+            onClick={() => navigate("/sign-up")}
+          >
+            아이디 찾기
+          </Button>
+          <Button
+            type="text"
+            className="text-xs"
+            onClick={() => navigate("/sign-up")}
+          >
+            비밀번호 찾기
+          </Button>
+          <Button
+            type="text"
+            className="text-xs"
+            onClick={() => navigate("/sign-up")}
+          >
+            회원가입
+          </Button>
+        </div>
+      </Page.Body>
+    </Page>
+  );
+};
