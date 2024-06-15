@@ -14,12 +14,14 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "simple-import-sort/exports": "error",
     "simple-import-sort/imports": [
       "error",
       {
         groups: [
           // Packages `react` related packages come first.
-          ["^react", "axios"],
+          ["^react", "^ant", "^@ant", "^axios"],
+          // ["^axios", "^antd", "^@ant"],
           // Internal packages.
           ["@app", "@pages", "@widgets", "@features", "@entities", "@shared"],
           // Side effect imports.
