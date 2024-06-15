@@ -1,24 +1,56 @@
-import { useNavigate } from "react-router-dom";
 import Button from "antd/es/button";
 import Form from "antd/es/form";
 import Input from "antd/es/input";
 
+import { useUserSignUpMutation } from "@shared/api/user/sign-up";
 import { Page } from "@shared/components/Page";
 
+import { SignUpForm } from "./types";
+
 export const SignUp: React.FC = () => {
-  const [form] = Form.useForm();
-  const navigate = useNavigate();
-  console.log(navigate);
+  const [form] = Form.useForm<SignUpForm>();
+  const { mutateAsync } = useUserSignUpMutation();
+
+  const onClickUniqueCheck = () => {};
+  const onClickSubmit = async (values: SignUpForm) => {
+    try {
+      await mutateAsync({
+        id: values.id,
+        nickname: values.nickname,
+        password: values.password,
+      });
+      window.location.replace("/");
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   return (
     <Page>
       <Page.Header back title="회원가입" />
       <Page.Body>
-        <Form form={form}>
+        <Form form={form} onFinish={onClickSubmit}>
           <Form.Item
             label="아이디"
             name="id"
             rules={[{ required: true, message: "아이디를 입력해주세요" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item name="check" noStyle>
+            <Button
+              type="primary"
+              htmlType="button"
+              className="my-4"
+              onClick={onClickUniqueCheck}
+            >
+              중복확인
+            </Button>
+          </Form.Item>
+          <Form.Item
+            label="닉네임"
+            name="nickname"
+            rules={[{ required: true, message: "닉네임을 입력해주세요" }]}
           >
             <Input />
           </Form.Item>
