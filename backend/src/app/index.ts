@@ -1,7 +1,11 @@
 import express from "express";
+
 import path from "path";
 
-export const startServer = () => {
+import { connectDB } from "./database";
+
+export const startServer = async () => {
+  await connectDB();
   const app = express();
 
   app.listen(4000, () => {
