@@ -3,7 +3,15 @@ declare global {
     interface ProcessEnv {
       PORT: number;
       MONGO_URI: string;
+      SESSION_URI: string;
       COOKIE_SECRET: string;
+    }
+  }
+  namespace Express {
+    interface User {
+      id: string;
+      nickname: string;
+      password: string;
     }
   }
 }

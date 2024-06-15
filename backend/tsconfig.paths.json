@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@services": ["./src/services"],
-      "@models": ["./src/models"],
+      "@services/*": ["./src/services/*"],
+      "@models/*": ["./src/models/*"],
       "@routes": ["./src/routes"],
       "@controllers/*": ["./src/controllers/*"]
     }
