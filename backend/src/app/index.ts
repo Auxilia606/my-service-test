@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 
 export const startServer = () => {
   const app = express();
@@ -7,7 +8,15 @@ export const startServer = () => {
     console.log("start server");
   });
 
-  app.get("/", (_, res) => {
-    res.send("<h1>This is youngtaek's webserver!</h1>");
+  // app.use('/api', api);
+
+  app.get("*", (req, res) => {
+    if (req.path === "/") {
+      res.sendFile(
+        path.join(__dirname, "../../../frontend/dist", "index.html")
+      );
+    } else {
+      res.sendFile(path.join(__dirname, "../../../frontend/dist", req.path));
+    }
   });
 };
