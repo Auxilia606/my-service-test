@@ -21,4 +21,11 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: { "antd-form": ["antd/es/form"], antd: ["antd"] },
+      },
+    },
+  },
 });
