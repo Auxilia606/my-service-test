@@ -10,13 +10,8 @@ export const startServer = () => {
 
   // app.use('/api', api);
 
+  app.use(express.static(path.join(__dirname, "../../../frontend/dist")));
   app.get("*", (req, res) => {
-    if (req.path === "/") {
-      res.sendFile(
-        path.join(__dirname, "../../../frontend/dist", "index.html")
-      );
-    } else {
-      res.sendFile(path.join(__dirname, "../../../frontend/dist", req.path));
-    }
+    res.sendFile(path.join(__dirname, "../../../frontend/dist", "index.html"));
   });
 };
