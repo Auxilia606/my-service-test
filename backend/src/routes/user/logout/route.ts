@@ -8,7 +8,7 @@ userRouter.get<object, ResDTO, ReqDTO>(
   isLoggedIn,
   async (req, res) => {
     req.logout(() => null);
-    req.session.destroy(() => null);
-    res.redirect("/");
+    // req.session.destroy(() => null);
+    res.status(200).send();
   }
 );
