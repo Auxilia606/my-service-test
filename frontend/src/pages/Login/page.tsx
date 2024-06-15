@@ -3,17 +3,29 @@ import Button from "antd/es/button";
 import Form from "antd/es/form";
 import Input from "antd/es/input";
 
+import { useUserLoginMutation } from "@shared/api/user/login";
+import { useUserInfoState } from "@shared/atom/userInfo";
 import { Page } from "@shared/components/Page";
 
 export const Login: React.FC = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const { mutateAsync } = useUserLoginMutation();
+  const { setUserInfo } = useUserInfoState();
 
   return (
     <Page>
       <Page.Header title="로그인" />
       <Page.Body>
-        <Form form={form}>
+        <Form
+          form={form}
+          onFinish={async (values) => {
+            await mutateAsync(values);
+            setUserInfo({ login: true, nickname: "asdasd" });
+            navigate("/");
+            // window.location.replace("/");
+          }}
+        >
           <Form.Item
             label="아이디"
             name="id"

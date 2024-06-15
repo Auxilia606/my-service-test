@@ -1,9 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-export const ProtectedRouter: React.FC = () => {
-  const userInfo = false;
+import { useUserInfoState } from "../../shared/atom/userInfo";
 
-  if (!userInfo) {
+export const ProtectedRouter: React.FC = () => {
+  const { userInfo } = useUserInfoState();
+
+  if (!userInfo.login) {
     return <Navigate to="/login" />;
   }
 
