@@ -1,0 +1,11 @@
+{
+  "name": "my-service-test",
+  "version": "1.0.0",
+  "scripts": {
+    "server": "cd backend && yarn && yarn dev",
+    "build": "cd frontend && yarn && yarn build"
+  },
+  "repository": "https://github.com/Auxilia606/my-service-test.git",
+  "author": "youngtaek_hong <youngtaek_hong@dweax.com>",
+  "license": "MIT"
+}
