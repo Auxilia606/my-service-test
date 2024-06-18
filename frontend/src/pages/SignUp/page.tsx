@@ -35,7 +35,7 @@ export const SignUp: React.FC = () => {
             name="id"
             rules={[{ required: true, message: "아이디를 입력해주세요" }]}
           >
-            <Input />
+            <Input autoComplete="username" />
           </Form.Item>
           <Form.Item name="check" noStyle>
             <Button
@@ -52,14 +52,14 @@ export const SignUp: React.FC = () => {
             name="nickname"
             rules={[{ required: true, message: "닉네임을 입력해주세요" }]}
           >
-            <Input />
+            <Input autoComplete="username" />
           </Form.Item>
           <Form.Item
             label="비밀번호"
             name="password"
             rules={[{ required: true, message: "비밀번호를 입력해주세요" }]}
           >
-            <Input.Password />
+            <Input.Password autoComplete="new-password" />
           </Form.Item>
           <Form.Item
             label="비밀번호 확인"
@@ -78,7 +78,7 @@ export const SignUp: React.FC = () => {
               }),
             ]}
           >
-            <Input.Password />
+            <Input.Password autoComplete="new-password" />
           </Form.Item>
           <Form.Item noStyle>
             <Button type="primary" htmlType="submit" className="my-4">
