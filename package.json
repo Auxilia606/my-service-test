@@ -2,6 +2,7 @@
   "name": "my-service-test",
   "version": "1.0.0",
   "scripts": {
+    "front": "cd frontend && yarn && yarn dev",
     "server": "cd backend && yarn && yarn dev",
     "build": "cd frontend && yarn && yarn build"
   },
