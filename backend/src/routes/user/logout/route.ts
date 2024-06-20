@@ -1,4 +1,5 @@
-import { isLoggedIn } from "../login";
+import { isLoggedIn } from "@middlewares/user";
+
 import { userRouter } from "..";
 
 import { ReqDTO, ResDTO } from "./types";

@@ -21,7 +21,14 @@ module.exports = {
           // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
           ["^@?\\w"],
           // Internal packages.
-          ["@app", "@routes", "@controllers", "@services", "@models"],
+          [
+            "@app",
+            "@routes",
+            "@controllers",
+            "@middlewares",
+            "@services",
+            "@models",
+          ],
           // Side effect imports.
           ["^\\u0000"],
           // Parent imports. Put `..` last.

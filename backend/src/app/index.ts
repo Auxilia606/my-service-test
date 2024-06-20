@@ -33,6 +33,7 @@ export const startServer = async () => {
       },
     })
   );
+  // app.use(cors({ origin: ["localhost:5173", "localhost:4000"] }));
   app.use(cors());
   app.use(cookieParser(process.env.COOKIE_SECRET));
   app.use(passport.initialize());
