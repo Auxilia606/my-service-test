@@ -20,8 +20,9 @@ export const Login: React.FC = () => {
         <Form
           form={form}
           onFinish={async (values) => {
-            await mutateAsync(values);
-            setUserInfo({ login: true, nickname: "asdasd" });
+            const { nickname } = await mutateAsync(values);
+
+            setUserInfo({ login: true, nickname });
             navigate("/");
             // window.location.replace("/");
           }}
