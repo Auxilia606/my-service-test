@@ -6,29 +6,34 @@ import { userRouter } from "..";
 
 import { ReqDTO, ResDTO } from "./types";
 
-userRouter.post<object, ResDTO, ReqDTO>("/sign-up", async (req, res) => {
-  const { id, nickname, password } = req.body;
+userRouter.post<object, ResDTO, ReqDTO>(
+  "/sign-up",
+  isNotLoggedIn,
+  async (req, res) => {
+    const { id, nickname, password, phone } = req.body;
 
-  try {
-    const isExist = await User.findOne({
-      id,
-    });
+    try {
+      const isExist = await User.findOne({
+        id,
+      });
 
-    if (isExist) {
-      return res.status(409).send();
+      if (isExist) {
+        return res.status(409).send();
+      }
+
+      const hashedPassword = await hashPassword(password);
+
+      await User.create({
+        id,
+        phone,
+        nickname,
+        password: hashedPassword,
+      });
+
+      return res.status(200).send();
+    } catch (error) {
+      console.log(`[ERROR] sign-up fail: ${error}`);
+      return res.status(400).send();
     }
-
-    const hashedPassword = await hashPassword(password);
-
-    await User.create({
-      id,
-      nickname,
-      password: hashedPassword,
-    });
-
-    return res.status(200).send();
-  } catch (error) {
-    console.log(`[ERROR] sign-up fail: ${error}`);
-    return res.status(400).send();
   }
-});
+);
