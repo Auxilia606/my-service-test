@@ -1,4 +1,5 @@
 import { hashPassword } from "@controllers/user";
+import { isNotLoggedIn } from "@middlewares/user";
 import { User } from "@models/user";
 
 import { userRouter } from "..";
