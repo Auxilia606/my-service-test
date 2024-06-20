@@ -1,7 +1,8 @@
-import Button from "antd/es/button";
-import Form from "antd/es/form";
-import Input from "antd/es/input";
+import { Button, Form, Input } from "antd";
 
+import { ValidateUserId } from "@features/ValidateUserId";
+import { ValidateUserNickname } from "@features/ValidateUserNickname";
+import { ValidateUserPhone } from "@features/ValidateUserPhone";
 import { useUserSignUpMutation } from "@shared/api/user/sign-up";
 import { Page } from "@shared/components/Page";
 
@@ -11,12 +12,12 @@ export const SignUp: React.FC = () => {
   const [form] = Form.useForm<SignUpForm>();
   const { mutateAsync } = useUserSignUpMutation();
 
-  const onClickUniqueCheck = () => {};
   const onClickSubmit = async (values: SignUpForm) => {
     try {
       await mutateAsync({
         id: values.id,
         nickname: values.nickname,
+        phone: values.phone,
         password: values.password,
       });
       window.location.replace("/");
@@ -30,40 +31,20 @@ export const SignUp: React.FC = () => {
       <Page.Header back title="회원가입" />
       <Page.Body>
         <Form form={form} onFinish={onClickSubmit}>
-          <Form.Item
-            label="아이디"
-            name="id"
-            rules={[{ required: true, message: "아이디를 입력해주세요" }]}
-          >
-            <Input autoComplete="username" />
-          </Form.Item>
-          <Form.Item name="check" noStyle>
-            <Button
-              type="primary"
-              htmlType="button"
-              className="my-4"
-              onClick={onClickUniqueCheck}
-            >
-              중복확인
-            </Button>
-          </Form.Item>
-          <Form.Item
-            label="닉네임"
-            name="nickname"
-            rules={[{ required: true, message: "닉네임을 입력해주세요" }]}
-          >
-            <Input autoComplete="username" />
-          </Form.Item>
-          <Form.Item
+          <Form.Item<SignUpForm> noStyle name={["confirm", "nickname"]} />
+          <ValidateUserId />
+          <ValidateUserPhone />
+          <ValidateUserNickname />
+          <Form.Item<SignUpForm>
             label="비밀번호"
             name="password"
             rules={[{ required: true, message: "비밀번호를 입력해주세요" }]}
           >
             <Input.Password autoComplete="new-password" />
           </Form.Item>
-          <Form.Item
+          <Form.Item<SignUpForm>
             label="비밀번호 확인"
-            name="password-confirm"
+            name={["passwordConfirm"]}
             rules={[
               { required: true, message: "비밀번호를 입력해주세요" },
               ({ getFieldValue }) => ({
@@ -80,11 +61,9 @@ export const SignUp: React.FC = () => {
           >
             <Input.Password autoComplete="new-password" />
           </Form.Item>
-          <Form.Item noStyle>
-            <Button type="primary" htmlType="submit" className="my-4">
-              가입하기
-            </Button>
-          </Form.Item>
+          <Button type="primary" htmlType="submit" className="my-4">
+            가입하기
+          </Button>
         </Form>
       </Page.Body>
     </Page>
