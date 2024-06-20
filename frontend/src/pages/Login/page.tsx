@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "antd/es/button";
-import Form from "antd/es/form";
-import Input from "antd/es/input";
+import { Button, Form, Input } from "antd";
 
 import { useUserLoginMutation } from "@shared/api/user/login";
 import { useUserInfoState } from "@shared/atom/userInfo";
