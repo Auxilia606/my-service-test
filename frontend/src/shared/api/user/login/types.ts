@@ -3,4 +3,4 @@ export type ReqDTO = {
   password: string;
 };
 
-export type ResDTO = { a: string };
+export type ResDTO = { nickname: string };

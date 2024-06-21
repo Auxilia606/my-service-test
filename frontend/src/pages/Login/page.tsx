@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "antd/es/button";
-import Form from "antd/es/form";
-import Input from "antd/es/input";
+import { Button, Form, Input } from "antd";
 
 import { useUserLoginMutation } from "@shared/api/user/login";
 import { useUserInfoState } from "@shared/atom/userInfo";
@@ -20,8 +18,9 @@ export const Login: React.FC = () => {
         <Form
           form={form}
           onFinish={async (values) => {
-            await mutateAsync(values);
-            setUserInfo({ login: true, nickname: "asdasd" });
+            const { nickname } = await mutateAsync(values);
+
+            setUserInfo({ login: true, nickname });
             navigate("/");
             // window.location.replace("/");
           }}
@@ -31,14 +30,14 @@ export const Login: React.FC = () => {
             name="id"
             rules={[{ required: true, message: "아이디를 입력해주세요" }]}
           >
-            <Input />
+            <Input autoComplete="username" />
           </Form.Item>
           <Form.Item
             label="비밀번호"
             name="password"
             rules={[{ required: true, message: "비밀번호를 입력해주세요" }]}
           >
-            <Input.Password />
+            <Input.Password autoComplete="current-password" />
           </Form.Item>
           <Form.Item noStyle>
             <Button type="primary" htmlType="submit" className="my-4">

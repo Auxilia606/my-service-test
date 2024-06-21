@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "antd/es/button";
+import { Button } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
 
 import { useUserLogoutMutation } from "@shared/api/user/logout";
