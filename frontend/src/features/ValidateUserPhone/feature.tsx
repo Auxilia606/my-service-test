@@ -1,10 +1,10 @@
-import React from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form } from "antd";
 
 import { SignUpForm } from "@pages/SignUp/types";
 import { useUserCheckPhoneMutation } from "@shared/api/user/check/phone";
+import { MaskedInput } from "@shared/components/MaskedInput";
 
-export const ValidateUserPhone: React.FC = () => {
+export const ValidateUserPhone = () => {
   const form = Form.useFormInstance<SignUpForm>();
 
   const { mutateAsync: mutateUserCheckPhone } = useUserCheckPhoneMutation();
@@ -65,10 +65,11 @@ export const ValidateUserPhone: React.FC = () => {
         ]}
       >
         <div className="flex gap-2">
-          <Input
+          <MaskedInput
             type="tel"
             onChange={onChangePhone}
             placeholder="010-xxxx-xxxx"
+            opts={{ mask: "000-0000-0000" }}
           />
           <Button
             type="primary"
