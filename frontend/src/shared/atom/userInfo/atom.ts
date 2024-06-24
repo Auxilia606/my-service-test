@@ -7,5 +7,6 @@ export const userInfoState = atom<UserInfoState>({
   default: {
     login: false,
     nickname: "",
+    token: "",
   },
 });
