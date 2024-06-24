@@ -1,13 +1,12 @@
-import { useUserInfoState } from "@shared/atom/userInfo";
 import { Page } from "@shared/components/Page";
 
-export const Main: React.FC = () => {
-  const { userInfo } = useUserInfoState();
-
+export const Main = () => {
   return (
     <Page>
       <Page.Header title="메인페이지" logout />
-      안녕하세요! {userInfo.nickname}
+      <Page.Section>
+        <div className="w-40 h-40"></div>
+      </Page.Section>
     </Page>
   );
 };

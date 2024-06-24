@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import { PageBody, PageHeader } from "./components";
+import { PageBody, PageHeader, PageSection } from "./components";
 
 const Base: React.FC<PropsWithChildren> = (props) => {
   const { children } = props;
@@ -11,4 +11,5 @@ const Base: React.FC<PropsWithChildren> = (props) => {
 export const Page = Object.assign(Base, {
   Body: PageBody,
   Header: PageHeader,
+  Section: PageSection,
 });
