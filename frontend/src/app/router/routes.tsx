@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import { CreatePost } from "@pages/CreatePost";
 import { FindId } from "@pages/FindId";
@@ -31,6 +31,7 @@ export const router = createBrowserRouter(
     },
     { path: "/find-id", element: <FindId /> },
     { path: "/find-password", element: <FindPassword /> },
+    { path: "*", element: <Navigate to="/" /> },
   ],
   { basename: "/" }
 );

@@ -12,7 +12,7 @@ export const PageHeader: React.FC<PageHeaderProps> = (props) => {
   const { title, back, logout } = props;
   const navigate = useNavigate();
   const { mutateAsync } = useUserLogoutMutation();
-  const { setUserInfo } = useUserInfoState();
+  const { updateUserInfo } = useUserInfoState();
 
   const onClickBack = useCallback(() => {
     navigate(-1);
@@ -20,9 +20,9 @@ export const PageHeader: React.FC<PageHeaderProps> = (props) => {
 
   const onClickLogout = useCallback(async () => {
     await mutateAsync();
-    setUserInfo({ login: false, nickname: "" });
+    updateUserInfo({ token: "", nickname: "" });
     navigate("/");
-  }, [mutateAsync, navigate, setUserInfo]);
+  }, [mutateAsync, navigate, updateUserInfo]);
 
   return (
     <div className="p-4 flex gap-4 border-b-4 border-double">

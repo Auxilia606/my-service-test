@@ -9,7 +9,7 @@ export const Login: React.FC = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const { mutateAsync } = useUserLoginMutation();
-  const { setUserInfo } = useUserInfoState();
+  const { updateUserInfo } = useUserInfoState();
 
   return (
     <Page>
@@ -20,7 +20,7 @@ export const Login: React.FC = () => {
           onFinish={async (values) => {
             const { nickname, token } = await mutateAsync(values);
 
-            setUserInfo({ login: true, nickname, token });
+            updateUserInfo({ nickname, token });
             navigate("/");
             // window.location.replace("/");
           }}

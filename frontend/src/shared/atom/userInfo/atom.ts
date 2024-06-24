@@ -1,11 +1,12 @@
+import { getLocalStorageItem } from "@shared/utils";
+
 import { UserInfoState } from "./types";
 
 import { atom } from "recoil";
 
 export const userInfoState = atom<UserInfoState>({
   key: "userState",
-  default: {
-    login: false,
+  default: getLocalStorageItem("userInfo") || {
     nickname: "",
     token: "",
   },
