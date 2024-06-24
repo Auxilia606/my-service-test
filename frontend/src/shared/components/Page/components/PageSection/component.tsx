@@ -1,10 +1,14 @@
-import { PropsWithChildren } from "react";
+import { PageSectionProps } from "./types";
 
-export const PageSection = (props: PropsWithChildren) => {
-  const { children } = props;
+import { twMerge } from "tailwind-merge";
+
+export const PageSection = (props: PageSectionProps) => {
+  const { children, className } = props;
 
   return (
-    <section className="bg-slate-200 mx-4 rounded-md shadow-md">
+    <section
+      className={twMerge("bg-slate-200 mx-4 rounded-md shadow-md", className)}
+    >
       {children}
     </section>
   );

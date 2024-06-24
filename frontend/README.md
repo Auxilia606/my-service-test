@@ -93,7 +93,10 @@ typescript.json
   // }
   "Functional Component Props Type": {
     "prefix": "tsfct",
-    "body": ["type ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}Props = {}", ""],
+    "body": [
+      "export type ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}Props = {}",
+      ""
+    ],
     "description": "Functional Component"
   }
 }

@@ -3,7 +3,7 @@ import { Button, Form, Input } from "antd";
 
 import { useUserLoginMutation } from "@shared/api/user/login";
 import { useUserInfoState } from "@shared/atom/userInfo";
-import { Page } from "@shared/components/Page";
+import { Page } from "@shared/components";
 
 export const Login = () => {
   const [form] = Form.useForm();

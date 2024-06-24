@@ -2,7 +2,7 @@ import { Button, Form } from "antd";
 
 import { SignUpForm } from "@pages/SignUp/types";
 import { useUserCheckPhoneMutation } from "@shared/api/user/check/phone";
-import { MaskedInput } from "@shared/components/MaskedInput";
+import { MaskedInput } from "@shared/components";
 
 export const ValidateUserPhone = () => {
   const form = Form.useFormInstance<SignUpForm>();
