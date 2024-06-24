@@ -59,7 +59,7 @@ export const ValidateUserId: React.FC = () => {
                 setFieldValue(["confirm", "id"], "validating");
                 return Promise.reject(new Error("동일한 아이디가 존재합니다"));
               } else {
-                setFieldValue(["confirm", "id"], "");
+                setFieldValue(["confirm", "id"], "success");
                 return Promise.resolve();
               }
             },

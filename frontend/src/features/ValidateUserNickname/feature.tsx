@@ -58,7 +58,7 @@ export const ValidateUserNickname: React.FC = () => {
                 setFieldValue(["confirm", "nickname"], "validating");
                 return Promise.reject(new Error("동일한 닉네임이 존재합니다"));
               } else {
-                setFieldValue(["confirm", "nickname"], "");
+                setFieldValue(["confirm", "nickname"], "success");
                 return Promise.resolve();
               }
             },

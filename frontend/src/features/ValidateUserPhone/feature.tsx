@@ -57,7 +57,7 @@ export const ValidateUserPhone = () => {
                   new Error("동일한 전화번호가 존재합니다")
                 );
               } else {
-                setFieldValue(["confirm", "phone"], "");
+                setFieldValue(["confirm", "phone"], "success");
                 return Promise.resolve();
               }
             },
