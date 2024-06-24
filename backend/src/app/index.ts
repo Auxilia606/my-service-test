@@ -1,7 +1,6 @@
 import express from "express";
 import session from "express-session";
 
-import cookieParser from "cookie-parser";
 import cors from "cors";
 import passport from "passport";
 import path from "path";
@@ -27,15 +26,13 @@ export const startServer = async () => {
       resave: false,
       saveUninitialized: false,
       secret: process.env.COOKIE_SECRET,
-      cookie: {
-        httpOnly: true,
-        secure: false,
-      },
     })
   );
-  // app.use(cors({ origin: ["localhost:5173", "localhost:4000"] }));
-  app.use(cors());
-  app.use(cookieParser(process.env.COOKIE_SECRET));
+  app.use(
+    cors({ credentials: true, origin: ["localhost:5173", "localhost:4000"] })
+  );
+  // app.use(cors());
+  // app.use(cookieParser(process.env.COOKIE_SECRET));
   app.use(passport.initialize());
   app.use(passport.session());
 

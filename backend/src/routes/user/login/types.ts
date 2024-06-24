@@ -5,4 +5,5 @@ export type ReqDTO = {
 
 export type ResDTO = {
   nickname: string;
+  token?: string;
 };

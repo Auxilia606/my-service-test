@@ -5,11 +5,11 @@ import { checkRouter } from "..";
 
 import { ReqDTO, ResDTO } from "./types";
 
-checkRouter.get<object, ResDTO, ReqDTO>(
+checkRouter.get<object, ResDTO, undefined, ReqDTO>(
   "/id",
   isNotLoggedIn,
   async (req, res) => {
-    const { id } = req.body;
+    const { id } = req.query;
 
     try {
       const isExist = await User.findOne({
