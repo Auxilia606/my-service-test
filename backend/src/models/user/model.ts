@@ -11,6 +11,7 @@ const postSchema = new Schema<PostDTO>({
 
 const userSchema = new Schema<UserDTO>({
   id: { type: String, required: true, unique: true },
+  phone: { type: String, required: true, unique: true },
   nickname: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   post: [postSchema],

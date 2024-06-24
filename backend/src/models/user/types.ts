@@ -13,6 +13,7 @@ export type PostDTO = {
 
 export type UserDTO = {
   id: string;
+  phone: string;
   nickname: string;
   password: string;
   post: PostDTO[];
