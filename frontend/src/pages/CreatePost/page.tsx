@@ -1,3 +1,3 @@
-export const CreatePost: React.FC = () => {
+export const CreatePost = () => {
   return <div>CreatePost Page</div>;
 };

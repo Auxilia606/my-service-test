@@ -51,7 +51,7 @@ https://adamwathan.me/css-utility-classes-and-separation-of-concerns/
 예시:
 
 ```tsx
-const BaseButton: React.FC<ButtonProps> = (props) => {
+const BaseButton = (props: ButtonProps) => {
   const { text, small, ...buttonProps } = props;
 
   return (

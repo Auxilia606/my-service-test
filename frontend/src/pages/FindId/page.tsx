@@ -2,7 +2,7 @@ import { Form } from "antd";
 
 import { Page } from "@shared/components/Page";
 
-export const FindId: React.FC = () => {
+export const FindId = () => {
   const [form] = Form.useForm();
 
   const onClickSubmit = async () => {};

@@ -1,10 +1,9 @@
-import React from "react";
 import { Button, Form, Input } from "antd";
 
 import { SignUpForm } from "@pages/SignUp/types";
 import { useUserCheckNicknameMutation } from "@shared/api/user/check/nickname";
 
-export const ValidateUserNickname: React.FC = () => {
+export const ValidateUserNickname = () => {
   const form = Form.useFormInstance();
 
   const { mutateAsync: mutateUserCheckNickname } =

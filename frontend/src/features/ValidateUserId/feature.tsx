@@ -1,10 +1,9 @@
-import React from "react";
 import { Button, Form, Input } from "antd";
 
 import { SignUpForm } from "@pages/SignUp/types";
 import { useUserCheckIdMutation } from "@shared/api/user/check/id";
 
-export const ValidateUserId: React.FC = () => {
+export const ValidateUserId = () => {
   const form = Form.useFormInstance();
 
   const { mutateAsync: mutateUserCheckId } = useUserCheckIdMutation();

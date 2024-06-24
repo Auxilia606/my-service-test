@@ -5,7 +5,7 @@ import { useUserLoginMutation } from "@shared/api/user/login";
 import { useUserInfoState } from "@shared/atom/userInfo";
 import { Page } from "@shared/components/Page";
 
-export const Login: React.FC = () => {
+export const Login = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const { mutateAsync } = useUserLoginMutation();

@@ -8,7 +8,7 @@ import { Page } from "@shared/components/Page";
 
 import { SignUpForm } from "./types";
 
-export const SignUp: React.FC = () => {
+export const SignUp = () => {
   const [form] = Form.useForm<SignUpForm>();
   const { mutateAsync } = useUserSignUpMutation();
 

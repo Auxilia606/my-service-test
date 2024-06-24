@@ -11,7 +11,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export const QueryProvider: React.FC<PropsWithChildren> = (props) => {
+export const QueryProvider = (props: PropsWithChildren) => {
   const { children } = props;
 
   return (
