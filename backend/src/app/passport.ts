@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import passport from "passport";
+import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 import { default as LocalStrategy } from "passport-local";
 
 import { User } from "@models/user";
@@ -24,10 +25,8 @@ export const passportConfig = () => {
       {
         usernameField: "id",
         passwordField: "password",
-        session: true,
-        passReqToCallback: true,
       },
-      async (req, id, password, done) => {
+      async (id, password, done) => {
         try {
           const user = await User.findOne({ id });
 
@@ -44,6 +43,31 @@ export const passportConfig = () => {
           }
 
           return done(null, user);
+        } catch (error) {
+          done(error);
+        }
+      }
+    )
+  );
+
+  passport.use(
+    "jwt",
+    new JWTStrategy(
+      {
+        jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+        secretOrKey: process.env.COOKIE_SECRET,
+      },
+      async (payload, done) => {
+        const { id } = payload;
+
+        try {
+          const user = await User.findOne({ id });
+
+          if (user) {
+            return done(null, user);
+          }
+
+          done(null, false, { reason: "올바르지 않은 인증정보입니다." });
         } catch (error) {
           done(error);
         }
