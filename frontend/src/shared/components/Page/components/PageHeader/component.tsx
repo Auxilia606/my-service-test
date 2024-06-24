@@ -8,11 +8,11 @@ import { useUserInfoState } from "@shared/atom/userInfo";
 
 import { PageHeaderProps } from "./types";
 
-export const PageHeader: React.FC<PageHeaderProps> = (props) => {
+export const PageHeader = (props: PageHeaderProps) => {
   const { title, back, logout } = props;
   const navigate = useNavigate();
   const { mutateAsync } = useUserLogoutMutation();
-  const { updateUserInfo } = useUserInfoState();
+  const { userInfo, updateUserInfo } = useUserInfoState();
 
   const onClickBack = useCallback(() => {
     navigate(-1);
@@ -25,7 +25,7 @@ export const PageHeader: React.FC<PageHeaderProps> = (props) => {
   }, [mutateAsync, navigate, updateUserInfo]);
 
   return (
-    <div className="p-4 flex gap-4 border-b-4 border-double">
+    <div className="sticky top-0 p-4 flex gap-4 border-b-4 border-double items-center bg-white">
       {back && (
         <Button
           type="text"
@@ -34,6 +34,7 @@ export const PageHeader: React.FC<PageHeaderProps> = (props) => {
         />
       )}
       <span className="text-2xl flex-1">{title}</span>
+      {userInfo && <span className="font-bold">{userInfo.nickname}님</span>}
       {logout && (
         <Button type="default" onClick={onClickLogout}>
           로그아웃
