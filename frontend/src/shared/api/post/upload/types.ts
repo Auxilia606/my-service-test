@@ -1,6 +1,11 @@
 export type ReqDTO = {
-  id: string;
-  password: string;
+  file: File;
 };
 
-export type ResDTO = { nickname: string; token: string };
+export type ResDTO = {
+  data: {
+    messages: string[];
+    baseurl: string;
+  };
+  success: boolean;
+};
