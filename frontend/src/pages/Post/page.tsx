@@ -1,10 +1,12 @@
-import { Page } from "@shared/components";
+import { Editor, Page } from "@shared/components";
 
 export const Post = () => {
   return (
     <Page>
       <Page.Header title="글쓰기" back />
-      <Page.Section></Page.Section>
+      <Page.Section>
+        <Editor />
+      </Page.Section>
     </Page>
   );
 };
