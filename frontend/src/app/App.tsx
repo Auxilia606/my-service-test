@@ -1,10 +1,8 @@
-import React from "react";
-
 import { QueryProvider, RouterProvider } from "./provider";
 
 import { RecoilRoot } from "recoil";
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <QueryProvider>
       <RecoilRoot>

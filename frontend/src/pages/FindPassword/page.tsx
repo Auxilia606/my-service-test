@@ -1,8 +1,8 @@
 import { Form } from "antd";
 
-import { Page } from "@shared/components/Page";
+import { Page } from "@shared/components";
 
-export const FindPassword: React.FC = () => {
+export const FindPassword = () => {
   const [form] = Form.useForm();
 
   const onClickSubmit = async () => {};

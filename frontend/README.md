@@ -51,7 +51,7 @@ https://adamwathan.me/css-utility-classes-and-separation-of-concerns/
 예시:
 
 ```tsx
-const BaseButton: React.FC<ButtonProps> = (props) => {
+const BaseButton = (props: ButtonProps) => {
   const { text, small, ...buttonProps } = props;
 
   return (
@@ -66,6 +66,102 @@ const BaseButton: React.FC<ButtonProps> = (props) => {
     </button>
   );
 };
+```
+
+## Visual Studio Code User Snippet
+
+경로
+
+> File > Preferences > Configure User Snippets
+
+typescript.json
+
+```json
+{
+  // Place your snippets for typescript here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "Functional Component Props Type": {
+    "prefix": "tsfct",
+    "body": [
+      "export type ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}Props = {}",
+      ""
+    ],
+    "description": "Functional Component"
+  }
+}
+```
+
+typescriptreact.json
+
+```json
+{
+  // Place your snippets for typescriptreact here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "Get Directory": {
+    "prefix": "getdir",
+    "body": ["${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}"]
+  },
+  "Functional Component": {
+    "prefix": "tsfc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "export const ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} = (props: ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}Props) => {",
+      "\tconst {} = props;",
+      "",
+      "\treturn <div></div>;",
+      "}",
+      ""
+    ],
+    "description": "Functional Component"
+  },
+  "Functional Component without Props": {
+    "prefix": "tsfcp",
+    "body": [
+      "import React from 'react'",
+      "",
+      "export const ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} = () => {",
+      "\treturn <div></div>;",
+      "}",
+      ""
+    ],
+    "description": "Functional Component"
+  },
+  "Functional Component Props with Children": {
+    "prefix": "tsfcpp",
+    "body": [
+      "import { PropsWithChildren } from 'react';",
+      "",
+      "export const ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} = (props: PropsWithChildren) => {",
+      "\treturn <div></div>;",
+      "}",
+      ""
+    ],
+    "description": "Functional Component"
+  }
+}
 ```
 
 ## Expanding the ESLint configuration

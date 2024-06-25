@@ -15,10 +15,13 @@
     "antd": "^5.18.1",
     "axios": "^1.7.1",
     "imask": "^7.6.1",
+    "jodit": "^4.2.27",
+    "jodit-react": "^4.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -38,5 +41,6 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-tsconfig-paths": "^4.3.2"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }

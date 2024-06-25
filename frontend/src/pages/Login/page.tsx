@@ -3,13 +3,13 @@ import { Button, Form, Input } from "antd";
 
 import { useUserLoginMutation } from "@shared/api/user/login";
 import { useUserInfoState } from "@shared/atom/userInfo";
-import { Page } from "@shared/components/Page";
+import { Page } from "@shared/components";
 
-export const Login: React.FC = () => {
+export const Login = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const { mutateAsync } = useUserLoginMutation();
-  const { setUserInfo } = useUserInfoState();
+  const { updateUserInfo } = useUserInfoState();
 
   return (
     <Page>
@@ -20,7 +20,7 @@ export const Login: React.FC = () => {
           onFinish={async (values) => {
             const { nickname, token } = await mutateAsync(values);
 
-            setUserInfo({ login: true, nickname, token });
+            updateUserInfo({ nickname, token });
             navigate("/");
             // window.location.replace("/");
           }}
