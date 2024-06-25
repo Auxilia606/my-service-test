@@ -19,8 +19,12 @@ export const startServer = async () => {
     console.log("start server");
   });
 
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
+  app.use(
+    express.json({
+      limit: "5mb",
+    })
+  );
+  app.use(express.urlencoded({ extended: false, limit: "5mb" }));
   app.use(
     session({
       resave: false,
@@ -41,6 +45,7 @@ export const startServer = async () => {
   passportConfig();
 
   app.use(express.static(path.join(__dirname, "../../../frontend/dist")));
+  app.use("/files", express.static(path.join(__dirname, "../../files")));
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../../../frontend/dist", "index.html"));
   });
