@@ -34,6 +34,7 @@ const RAW_RUNTIME_STATE =
           ["@types/express", "npm:4.17.21"],\
           ["@types/express-session", "npm:1.18.0"],\
           ["@types/jsonwebtoken", "npm:9.0.6"],\
+          ["@types/multer", "npm:1.4.11"],\
           ["@types/passport", "npm:1.0.16"],\
           ["@types/passport-jwt", "npm:4.0.1"],\
           ["@types/passport-local", "npm:1.0.38"],\
@@ -1659,6 +1660,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/multer", [\
+      ["npm:1.4.11", {\
+        "packageLocation": "./.yarn/cache/@types-multer-npm-1.4.11-a023fdbf13-ace8e9f5ac.zip/node_modules/@types/multer/",\
+        "packageDependencies": [\
+          ["@types/multer", "npm:1.4.11"],\
+          ["@types/express", "npm:4.17.21"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/node", [\
       ["npm:20.13.0", {\
         "packageLocation": "./.yarn/cache/@types-node-npm-20.13.0-88c0bd0276-4fb1ab41d6.zip/node_modules/@types/node/",\
@@ -2412,6 +2423,7 @@ const RAW_RUNTIME_STATE =
           ["@types/express", "npm:4.17.21"],\
           ["@types/express-session", "npm:1.18.0"],\
           ["@types/jsonwebtoken", "npm:9.0.6"],\
+          ["@types/multer", "npm:1.4.11"],\
           ["@types/passport", "npm:1.0.16"],\
           ["@types/passport-jwt", "npm:4.0.1"],\
           ["@types/passport-local", "npm:1.0.38"],\
