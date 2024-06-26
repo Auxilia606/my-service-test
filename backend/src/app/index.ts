@@ -33,7 +33,10 @@ export const startServer = async () => {
     })
   );
   app.use(
-    cors({ credentials: true, origin: ["localhost:5173", "localhost:4000"] })
+    cors({
+      credentials: true,
+      origin: ["http://localhost:5173", "http://localhost:4000"],
+    })
   );
   // app.use(cors());
   // app.use(cookieParser(process.env.COOKIE_SECRET));
