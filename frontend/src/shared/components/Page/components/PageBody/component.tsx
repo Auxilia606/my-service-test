@@ -1,7 +1,9 @@
 import { PageBodyProps } from "./types";
 
-export const PageBody = (props: PageBodyProps) => {
-  const { children } = props;
+import { twMerge } from "tailwind-merge";
 
-  return <div className="p-4">{children}</div>;
+export const PageBody = (props: PageBodyProps) => {
+  const { children, className } = props;
+
+  return <div className={twMerge("p-4", className)}>{children}</div>;
 };

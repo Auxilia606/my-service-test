@@ -1,13 +1,14 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import JoditEditor, { Jodit } from "jodit-react";
 
 import { getLocalStorageItem } from "@shared/utils";
 
+import { EditorProps } from "./types";
 import { uploader } from "./utils";
 
-export const Editor = () => {
+export const Editor = (props: EditorProps) => {
+  const { content, setContent } = props;
   const editor = useRef<Jodit>(null);
-  const [content, setContent] = useState("");
 
   const config = useMemo(() => {
     return {
@@ -16,18 +17,19 @@ export const Editor = () => {
       uploader: uploader({
         token: getLocalStorageItem("userInfo")?.token || "",
       }),
+      height: 500,
+      allowResizeX: false,
+      allowResizeY: false,
     };
   }, []);
 
   return (
-    <div>
-      <JoditEditor
-        ref={editor}
-        value={content}
-        config={config}
-        onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-        // onChange={(newContent) => {}}
-      />
-    </div>
+    <JoditEditor
+      ref={editor}
+      value={content}
+      config={config}
+      onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+      // onChange={(newContent) => {}}
+    />
   );
 };
