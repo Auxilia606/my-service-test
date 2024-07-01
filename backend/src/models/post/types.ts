@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import { ReplyDTO } from "@models/reply/types";
 
 export type PostDTO = {
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
   creator: {
     _id: mongoose.Types.ObjectId;
     nickname: string;

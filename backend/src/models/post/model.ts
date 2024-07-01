@@ -11,8 +11,14 @@ const postSchema = new Schema<PostDTO>({
     _id: mongoose.Types.ObjectId,
     nickname: String,
   },
-  createdAt: String,
-  updatedAt: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
   reply: [replySchema],
 });
 
