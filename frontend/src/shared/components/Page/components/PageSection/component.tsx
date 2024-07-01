@@ -7,7 +7,7 @@ export const PageSection = (props: PageSectionProps) => {
 
   return (
     <section
-      className={twMerge("bg-slate-200 mx-4 rounded-md shadow-md", className)}
+      className={twMerge("bg-white mx-4 rounded-md shadow-md", className)}
     >
       {children}
     </section>
