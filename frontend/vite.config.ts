@@ -24,7 +24,18 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: { "antd-form": ["antd/es/form"], antd: ["antd"] },
+        manualChunks: {
+          "antd-form": ["antd/es/form"],
+          antd: ["antd"],
+          react: [
+            "react",
+            "react-dom",
+            "react-router-dom",
+            "@tanstack/react-query",
+          ],
+          etc: ["axios", "imask", "tailwind-merge", "recoil"],
+          "jodit-react": ["jodit-react"],
+        },
       },
     },
   },

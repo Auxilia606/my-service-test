@@ -5,7 +5,9 @@ import { PageBody, PageHeader, PageSection } from "./components";
 const Base = (props: PropsWithChildren) => {
   const { children } = props;
 
-  return <div className="relative flex flex-col gap-4">{children}</div>;
+  return (
+    <div className="relative flex flex-col gap-4 min-h-screen">{children}</div>
+  );
 };
 
 export const Page = Object.assign(Base, {

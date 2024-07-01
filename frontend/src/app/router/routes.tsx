@@ -17,8 +17,8 @@ export const router = createBrowserRouter(
       element: <ProtectedRouter />,
       children: [
         { path: "/", element: <Main /> },
-        { path: "/post", element: <Post /> },
-        { path: "/create-post", element: <CreatePost /> },
+        { path: "/post/:id", element: <Post /> },
+        { path: "/post/create", element: <CreatePost /> },
       ],
     },
     {
