@@ -34,7 +34,9 @@ export const PageHeader = (props: PageHeaderProps) => {
         />
       )}
       <span className="text-2xl flex-1">{title}</span>
-      {userInfo && <span className="font-bold">{userInfo.nickname}님</span>}
+      {userInfo && userInfo.token && (
+        <span className="font-bold">{userInfo.nickname}님</span>
+      )}
       {logout && (
         <Button type="default" onClick={onClickLogout}>
           로그아웃

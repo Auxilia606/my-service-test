@@ -1,3 +1,5 @@
+import { App as ANTDApp } from "antd";
+
 import { QueryProvider, RouterProvider } from "./provider";
 
 import { RecoilRoot } from "recoil";
@@ -6,7 +8,9 @@ const App = () => {
   return (
     <QueryProvider>
       <RecoilRoot>
-        <RouterProvider />
+        <ANTDApp>
+          <RouterProvider />
+        </ANTDApp>
       </RecoilRoot>
     </QueryProvider>
   );

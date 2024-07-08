@@ -25,6 +25,8 @@ dist-ssr
 *.sln
 *.sw?
 
+backend/files/*
+
 backend/.yarn/*
 backend/!.yarn/cache
 backend/!.yarn/patches
