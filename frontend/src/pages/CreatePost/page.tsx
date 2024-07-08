@@ -47,7 +47,10 @@ export const CreatePost = () => {
             <Input placeholder="제목을 입력해주세요" />
           </Form.Item>
           <Form.Item label="내용" required name={["content"]}>
-            <Editor {...{ content, setContent }} />
+            <Editor
+              {...{ content, setContent }}
+              placeholder="내용을 작성해주세요"
+            />
           </Form.Item>
           <div className="flex justify-between bg-white mt-4">
             <Button danger htmlType="button" onClick={onClickCancel}>
