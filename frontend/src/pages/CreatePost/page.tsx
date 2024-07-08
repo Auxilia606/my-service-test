@@ -19,9 +19,9 @@ export const CreatePost = () => {
       modal.success({
         title: "등록을 완료했습니다.",
         onOk: () => {
-          navigate("/");
+          navigate(-1);
         },
-        onClose: () => navigate("/"),
+        onClose: () => navigate(-1),
       });
     } catch (error) {
       modal.error({ title: "등록을 실패했습니다." });

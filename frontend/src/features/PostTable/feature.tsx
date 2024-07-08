@@ -4,10 +4,12 @@ import { ConfigProvider, Table, TablePaginationConfig, TableProps } from "antd";
 import { ReqDTO, usePostListQuery } from "@shared/api/post/list";
 
 import { usePostListColumns } from "./hooks";
+import { PostListProps } from "./types";
 
-export const PostList = () => {
+export const PostTable = (props: PostListProps) => {
+  const { hidePagination, pageSize, className } = props;
   const [searchParams, setSearchParams] = useState<ReqDTO>({
-    pageSize: "10",
+    pageSize: pageSize || "10",
     page: "1",
   });
   const { data, isLoading } = usePostListQuery(searchParams);
@@ -35,13 +37,13 @@ export const PostList = () => {
   return (
     <ConfigProvider theme={{ components: { Table: { cellFontSizeSM: 10 } } }}>
       <Table
+        className={className}
         dataSource={data?.data}
         columns={columns}
         rowKey={(record) => record.id}
-        pagination={pagination}
+        pagination={!hidePagination && pagination}
         onChange={onChangeTable}
         size="small"
-        title={() => <p className="text-xl font-bold">모든 글 보기</p>}
         loading={isLoading}
       />
     </ConfigProvider>
