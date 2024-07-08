@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Input, Modal } from "antd";
+import { App, Button, Form, Input, Modal } from "antd";
 
 import { usePostCreateMutation } from "@shared/api/post/create";
 import { Editor, Page } from "@shared/components";
 
 export const CreatePost = () => {
+  const { modal } = App.useApp();
   const [form] = Form.useForm();
   const { mutateAsync: mutatePostCreate } = usePostCreateMutation();
   const [content, setContent] = useState("");
@@ -15,13 +16,15 @@ export const CreatePost = () => {
   const onFinish = async (values: { title: string }) => {
     try {
       await mutatePostCreate({ title: values.title, content });
-      Modal.success({
+      modal.success({
         title: "등록을 완료했습니다.",
-        onOk: () => navigate("/"),
+        onOk: () => {
+          navigate("/");
+        },
         onClose: () => navigate("/"),
       });
     } catch (error) {
-      Modal.error({ title: "등록을 실패했습니다." });
+      modal.error({ title: "등록을 실패했습니다." });
     }
   };
 
