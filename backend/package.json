@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/src/index.js",
-    "build": "tsc && tsc-alias",
+    "tsc": "tsc && tsc-alias",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node -r tsconfig-paths/register\" src/index.ts"
   },
@@ -50,6 +50,5 @@
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0"
-  },
-  "packageManager": "yarn@4.3.1"
+  }
 }
