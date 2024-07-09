@@ -1,11 +1,13 @@
 import express from "express";
 
-export const userRouter = express.Router();
-
-import "./login";
-import "./logout";
-import "./sign-up";
-
 import { checkRouter } from "./check";
+import { loginRouter } from "./login";
+import { logoutRouter } from "./logout";
+import { signUpRouter } from "./sign-up";
 
-userRouter.use("/check", checkRouter);
+export const userRouter = express
+  .Router()
+  .use("/user", checkRouter)
+  .use("/user", loginRouter)
+  .use("/user", logoutRouter)
+  .use("/user", signUpRouter);

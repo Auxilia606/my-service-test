@@ -8,7 +8,7 @@ const postSchema = new Schema<PostDTO>({
   title: { type: String, required: true },
   content: String,
   creator: {
-    _id: mongoose.Types.ObjectId,
+    _id: String,
     nickname: String,
   },
   createdAt: {

@@ -1,15 +1,14 @@
+import express from "express";
+
 import { hashPassword } from "@controllers/user";
 import { isNotLoggedIn } from "@middlewares/user";
 import { User } from "@models/user";
 
-import { userRouter } from "..";
-
 import { ReqDTO, ResDTO } from "./types";
 
-userRouter.post<object, ResDTO, ReqDTO>(
-  "/sign-up",
-  isNotLoggedIn,
-  async (req, res) => {
+export const signUpRouter = express
+  .Router()
+  .post<object, ResDTO, ReqDTO>("/sign-up", isNotLoggedIn, async (req, res) => {
     const { id, nickname, password, phone } = req.body;
 
     try {
@@ -35,5 +34,4 @@ userRouter.post<object, ResDTO, ReqDTO>(
       console.log(`[ERROR] sign-up fail: ${error}`);
       return res.status(400).send();
     }
-  }
-);
+  });

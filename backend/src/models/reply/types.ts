@@ -1,10 +1,8 @@
-import mongoose from "mongoose";
-
 export type ReplyDTO = {
   createdAt: string;
   updatedAt: string;
   creator: {
-    _id: mongoose.Types.ObjectId;
+    _id: String;
     nickname: string;
   };
   content: string;
@@ -15,7 +13,7 @@ export type SubReplyDTO = {
   createdAt: string;
   updatedAt: string;
   creator: {
-    _id: mongoose.Types.ObjectId;
+    _id: String;
     nickname: string;
   };
   content: string;

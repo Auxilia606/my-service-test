@@ -1,8 +1,8 @@
+import express from "express";
+
 import multer from "multer";
 
 import { isLoggedIn } from "@middlewares/user";
-
-import { postRouter } from "..";
 
 import { ReqDTO, ResDTO } from "./types";
 
@@ -19,17 +19,19 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-postRouter.post<Record<string, string>, ResDTO, ReqDTO>(
-  "/upload",
-  isLoggedIn,
-  upload.single("files[0]"),
-  async (req, res) => {
-    res.status(200).send({
-      data: {
-        messages: ["OK"],
-        baseurl: `${req.file?.destination}${req.file?.filename}`,
-      },
-      success: true,
-    });
-  }
-);
+export const postUploadRouter = express
+  .Router()
+  .post<Record<string, string>, ResDTO, ReqDTO>(
+    "/upload",
+    isLoggedIn,
+    upload.single("files[0]"),
+    async (req, res) => {
+      res.status(200).send({
+        data: {
+          messages: ["OK"],
+          baseurl: `${req.file?.destination}${req.file?.filename}`,
+        },
+        success: true,
+      });
+    }
+  );

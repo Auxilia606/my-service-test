@@ -1,13 +1,13 @@
+import express from "express";
+
 import { isLoggedIn } from "@middlewares/user";
 import { Post } from "@models/post";
 
 import { ReqDTO, ResDTO } from "./types";
-import { postRouter } from ".";
 
-postRouter.get<{ id: string }, ResDTO, ReqDTO>(
-  "/:id",
-  isLoggedIn,
-  async (req, res) => {
+export const postIdRouter = express
+  .Router()
+  .get<{ id: string }, ResDTO, ReqDTO>("/:id", isLoggedIn, async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -35,5 +35,4 @@ postRouter.get<{ id: string }, ResDTO, ReqDTO>(
         message: "서버 에러가 발생하였습니다.",
       });
     }
-  }
-);
+  });

@@ -1,7 +1,11 @@
 import express from "express";
 
-export const checkRouter = express.Router();
+import { idRouter } from "./id";
+import { nicknameRouter } from "./nickname";
+import { phoneRouter } from "./phone";
 
-import "./id";
-import "./nickname";
-import "./phone";
+export const checkRouter = express
+  .Router()
+  .use("/check", idRouter)
+  .use("/nickname", nicknameRouter)
+  .use("/phone", phoneRouter);
