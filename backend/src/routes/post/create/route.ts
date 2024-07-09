@@ -12,7 +12,6 @@ export const postCreateRouter = express
     isLoggedIn,
     async (req, res) => {
       const { content, title } = req.body;
-      console.log(req.user, content, title, new Date());
 
       try {
         await Post.create({

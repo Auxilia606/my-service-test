@@ -9,7 +9,6 @@ const postSchema = new Schema<PostDTO>({
   content: String,
   creator: {
     _id: String,
-    nickname: String,
   },
   createdAt: {
     type: Date,

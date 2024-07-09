@@ -2,6 +2,7 @@ import express from "express";
 
 import { isLoggedIn } from "@middlewares/user";
 import { Post } from "@models/post";
+import { User } from "@models/user";
 
 import { ReqDTO, ResDTO } from "./types";
 
@@ -22,16 +23,20 @@ export const postListRouter = express
           .skip(skip)
           .limit(limit);
 
-        const formattedData: ResDTO["data"] = sortedData.map((value) => {
-          return {
-            id: value._id.toString(),
-            title: value.title,
-            content: value.content,
-            createdAt: value.createdAt,
-            updatedAt: value.updatedAt,
-            creator: value.creator.nickname,
-          };
-        });
+        const formattedData: ResDTO["data"] = await Promise.all(
+          sortedData.map(async (value) => {
+            const creator = await User.findOne({ _id: value.creator._id });
+
+            return {
+              id: value._id.toString(),
+              title: value.title,
+              content: value.content,
+              createdAt: value.createdAt,
+              updatedAt: value.updatedAt,
+              creator: creator?.nickname || "",
+            };
+          })
+        );
 
         return res.status(200).send({
           data: formattedData,
