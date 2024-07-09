@@ -1,12 +1,10 @@
-import mongoose from "mongoose";
-
 import { ReplyDTO } from "@models/reply/types";
 
 export type PostDTO = {
   createdAt: Date;
   updatedAt: Date;
   creator: {
-    _id: mongoose.Types.ObjectId;
+    _id: string;
     nickname: string;
   };
   title: string;

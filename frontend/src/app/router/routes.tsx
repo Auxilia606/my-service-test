@@ -6,6 +6,7 @@ import { FindPassword } from "@pages/FindPassword";
 import { Login } from "@pages/Login";
 import { Main } from "@pages/Main";
 import { Post } from "@pages/Post";
+import { PostList } from "@pages/PostList";
 import { SignUp } from "@pages/SignUp";
 
 import { ProtectedRouter } from "./ProtectedRouter";
@@ -19,6 +20,7 @@ export const router = createBrowserRouter(
         { path: "/", element: <Main /> },
         { path: "/post/:id", element: <Post /> },
         { path: "/post/create", element: <CreatePost /> },
+        { path: "/post/list", element: <PostList /> },
       ],
     },
     {

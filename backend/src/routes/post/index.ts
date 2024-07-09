@@ -1,8 +1,13 @@
 import express from "express";
 
-export const postRouter = express.Router();
+import { postCreateRouter } from "./create";
+import { postListRouter } from "./list";
+import { postIdRouter } from "./route";
+import { postUploadRouter } from "./upload";
 
-import "./create";
-import "./list";
-import "./upload";
-import "./route";
+export const postRouter = express
+  .Router()
+  .use(postCreateRouter)
+  .use(postListRouter)
+  .use(postIdRouter)
+  .use(postUploadRouter);

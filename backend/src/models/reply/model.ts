@@ -5,7 +5,7 @@ import { ReplyDTO } from "./types";
 const subReplySchema = new Schema<ReplyDTO>({
   content: String,
   creator: {
-    _id: mongoose.Types.ObjectId,
+    _id: String,
     nickname: String,
   },
   createdAt: String,
@@ -15,7 +15,7 @@ const subReplySchema = new Schema<ReplyDTO>({
 export const replySchema = new Schema<ReplyDTO>({
   content: String,
   creator: {
-    _id: mongoose.Types.ObjectId,
+    _id: String,
     nickname: String,
   },
   createdAt: String,

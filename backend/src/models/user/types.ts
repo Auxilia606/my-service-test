@@ -1,10 +1,8 @@
-import mongoose from "mongoose";
-
 export type PostDTO = {
   createdAt: string;
   updatedAt: string;
   creator: {
-    _id: mongoose.Types.ObjectId;
+    _id: string;
     nickname: string;
   };
   title: string;
